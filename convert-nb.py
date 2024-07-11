@@ -78,12 +78,15 @@ def html_to_ipynb(html_content):
 def main():
     parser = argparse.ArgumentParser(description='Convert HTML to Jupyter Notebook')
     parser.add_argument('input', help='Input HTML file')
-    parser.add_argument('-o', '--output', help='Output ipynb file', default='output.ipynb')
+    parser.add_argument('-o', '--output', help='Output ipynb file', default='def')
 
     args = parser.parse_args()
 
     # Read the HTML file
     with open(args.input, 'r', encoding='utf-8') as f:
+        # Change default name to same as input with different extension
+        args.output = args.input.split('.')[0] + '.ipynb' if args.output == 'def' else args.output
+
         html_content = f.read()
 
     # Convert to .ipynb format
@@ -92,7 +95,7 @@ def main():
     # Write to .ipynb file
     with open(args.output, 'w', encoding='utf-8') as f:
         f.write(ipynb_content)
-    
+
     print(f"Conversion complete. Notebook saved as {args.output}")
 
 if __name__ == "__main__":
