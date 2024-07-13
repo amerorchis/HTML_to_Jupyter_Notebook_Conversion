@@ -32,8 +32,8 @@ python3 convert-nb.py input.html [-o output.ipynb]
 
 Arguments:
 
-- `input.html`: Path to the input HTML file (required)
-- `-o output.ipynb` or `--output output.ipynb`: Path to the output .ipynb file (optional, defaults to 'output.ipynb')
+- `input.html`: Path to the input HTML file (required) (this must be saved locally, the program can't retrieve by URL yet)
+- `-o output.ipynb` or `--output output.ipynb`: Path to the output .ipynb file (optional, defaults to the name the html file had before, with the ipynb extension)
 
 Example:
 
@@ -43,5 +43,6 @@ python3 convert-nb.py my_notebook.html -o converted_notebook.ipynb
 
 ## Limitations
 
+- You need to save the HTML file to you local machine, it can't retrieve it from a URL
 - Conversion of complex features like LaTex or images may not be perfect
 - Cell outputs are not preserved; you'll need to run the notebook to regenerate outputs
